@@ -565,7 +565,7 @@ export default {
             });
 
             stage44.on("dragenter", function(e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 //console.log("dragenter " + e.target.name());
                 layer44.draw();
             });

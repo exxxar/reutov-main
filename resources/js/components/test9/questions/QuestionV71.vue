@@ -319,7 +319,10 @@ export default {
                     outerRadius: 25,
                     scaleX: 1.9,
                     scaleY: 1.9,
-                    id: this.body71[i].id
+                    id: this.body71[i].id,
+                   // fill: 'red',
+                   // stroke: 'black',
+                   // strokeWidth: 0.05,
                 });
                 layer71.add(path71Front);
             }
@@ -335,6 +338,8 @@ export default {
                     outerRadius: 25,
                     scaleX: 2.5,
                     scaleY: 2.5,
+                    //stroke: 'black',
+                    //strokeWidth: 0.05,
                     id: this.secondbrain[i].id
                 });
                 layer71.add(path71Front);
@@ -351,6 +356,8 @@ export default {
                     outerRadius: 25,
                     scaleX: 2.5,
                     scaleY: 2.5,
+                    //stroke: 'black',
+                   // strokeWidth: 0.05,
                     id: this.thirdbrain[i].id
                 });
                 layer71.add(path71Front);
@@ -607,7 +614,7 @@ export default {
             });
 
             stage71.on("dragenter", function(e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 layer71.draw();
             });
 

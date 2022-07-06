@@ -669,7 +669,7 @@ export default {
             });
 
             stage74.on("dragenter", function (e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 layer74.draw();
             });
 

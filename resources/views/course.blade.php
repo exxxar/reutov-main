@@ -78,8 +78,10 @@
                                     <p class="trigger-title">
                                         {{ $loop->iteration }} раздел курса
                                     </p>
-                                    <div class="trigger-elem">
-                                        <input type="checkbox" id="checkbox-{{ $loop->iteration }}" name="checkbox-1"/>
+                                    <div class="trigger-elem {{$chapter->tests[0]->in_progress?"pause-icon":""}}" >
+
+                                        <input type="checkbox" id="checkbox-{{ $loop->iteration }}"
+                                               name="checkbox-1"/>
                                         <label for="checkbox-{{ $loop->iteration }}" class="checkbox">
                                             <div class="checkbox-img
                                        @if ($chapter->complete(Auth::user()))
@@ -89,8 +91,17 @@
                                                 <img src="{{ asset('icons/tick.png') }}" alt="courses">
                                                 <img src="{{ asset('icons/tick-hover.png') }}" alt="courses">
                                             </div>
-                                            {{ $chapter->title }}<i></i>
+
+                                            {{ $chapter->title }}
+
+
                                         </label>
+
+
+
+
+
+
                                         <div class="content">
                                             <p class="content-caption">Содержимое</p>
                                             @if (false)
@@ -145,20 +156,48 @@
                                                 </div>
                                             </div>
                                             <div class="content-test">
-                                                <p>
-                                                    Тест по теме
-                                                </p>
-                                                @if (!$chapter->available(Auth::user()))
-                                                    <p style="color: red">
-                                                        Завершите тест предыдущео раздела
-                                                    </p>
-                                                @endif
 
-                                                <button
-                                                    {{!$chapter->available(Auth::user()) ? 'disabled' : ''}} style="color: white"
-                                                    onclick="location.href='{{ url("/test/about/{$chapter->tests[0]['id']}")}}'">
-                                                    Пройти
-                                                </button>
+
+                                                <div class="row mb-2 w-100">
+                                                    <div class="col-10">
+                                                        <p>
+                                                            Тест по теме
+                                                        </p>
+                                                        @if (!$chapter->available(Auth::user()))
+                                                            <p style="color: red">
+                                                                Завершите тест предыдущео раздела
+                                                            </p>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="col-2 d-flex justify-content-end">
+                                                        <button
+                                                            {{!$chapter->available(Auth::user()) ? 'disabled' : ''}} style="color: white"
+                                                            onclick="location.href='{{ url("/test/about/{$chapter->tests[0]['id']}")}}'">
+                                                            Пройти
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row w-100">
+<!--                                                    {{print_r($chapter->tests[0]->complete_questions??[],true)}}-->
+
+                                                    @foreach($chapter->tests[0]->questions as $index=>$q)
+                                                        <div class="col-3 border-left">
+                                                            <p class="d-flex justify-content-between text-black">
+                                                                Вопрос {{$index+1}}
+                                                                @if(in_array($q->id,$chapter->tests[0]->complete_questions??[]))
+                                                                    <span class="text-primary">сдано</span>
+                                                                @else
+                                                                    <span class="text-danger">не сдано</span>
+                                                                @endif
+                                                            </p>
+                                                        </div>
+                                                    @endforeach
+
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>

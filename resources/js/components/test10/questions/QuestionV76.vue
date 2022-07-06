@@ -564,7 +564,7 @@ export default {
             });
 
             stage76.on("dragenter", function(e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 layer76.draw();
             });
 

@@ -99,6 +99,7 @@
         // border-bottom: 1px solid #1E2B3B;
         background: #fff;
         border-radius: 4px;
+        position: relative;
         #checkbox-1,
         #checkbox-2,
         #checkbox-3,
@@ -271,7 +272,8 @@
         display: flex;
         justify-content: space-between;
         padding: 45px 0 50px;
-        max-height: 126px;
+        min-height: 126px;
+        flex-wrap: wrap;
         p {
             font-size: 16px;
             color: rgb(0, 191, 255);

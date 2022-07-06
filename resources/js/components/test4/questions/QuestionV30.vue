@@ -495,7 +495,7 @@ export default {
             });
 
             stage30.on("dragenter", function(e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 //console.log("dragenter " + e.target.name());
                 layer.draw();
             });

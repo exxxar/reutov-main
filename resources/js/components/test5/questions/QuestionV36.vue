@@ -552,7 +552,7 @@ export default {
             });
 
             stage36.on("dragenter", function(e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 layer36.draw();
             });
 

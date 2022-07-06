@@ -42,6 +42,8 @@ Auth::routes(
 
 // Auth
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/storage/images/users/{id}/{photoName}', [HomeController::class, 'getPhoto'])->name('get.photo');
 // Продакшн тесты
 Route::get('/test/about/{test}', [UserTestController::class, 'testBefore'])->name('test.about');
 Route::get('/test/{test}', [UserTestController::class, 'test'])->name('test'); // Продакшн версия

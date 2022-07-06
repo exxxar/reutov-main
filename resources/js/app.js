@@ -33,14 +33,6 @@ Vue.component(
 
 Vue.component("line-progress", require("./components/LineProgress").default);
 
-Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
-);
-Vue.component(
-    "example-component-2",
-    require("./components/ExampleComponent.vue").default
-);
 
 Vue.component("course", require("./components/Course.vue").default);
 Vue.component("course-list", require("./components/CourseList.vue").default);
