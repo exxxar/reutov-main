@@ -84,9 +84,7 @@ export default {
             default: "01"
         },
     },
-    created() {
-        this.currentUrl = window.location.origin;
-    },
+
     data() {
         return {
             list: [
@@ -382,9 +380,19 @@ export default {
         }
     },
     mounted() {
-        if (!this.completed) this.onStart();
+        if (!this.completed)
+        {
+            setTimeout(() => {
+                this.onStart();
+                let swiper = document.querySelector(".test-swiper").swiper
+                swiper.update()
+            }, 2000)
+        }
     },
     created() {
+
+        this.currentUrl = window.location.origin;
+
         window.addEventListener("resize", this.fitStageIntoParentContainer);
         // вывести ответы пользователя, если попытка завершена
         if (this.currentQuestionAnswers) {

@@ -1,7 +1,7 @@
 <template>
     <div class="test-block">
         <div class="test-number number">
-            {{ ordinalNumber }} <b>/   {{ questions }}</b>
+            {{ ordinalNumber }} <b>/ {{ questions }}</b>
         </div>
         <div class="test-main test-course-of-the-first-neurons">
             <div class="test-caption">
@@ -49,7 +49,7 @@ export default {
         serverAnswers: {
             type: Array
         },
-      questions: {
+        questions: {
             type: Number,
         },
         ordinalNumber: {
@@ -62,18 +62,18 @@ export default {
             currentUrl: "",
             answers: [],
             correctAnswers: [
-                { result: "a path piece 9 rectungle0" },
-                { result: "a path piece 16 rectungle1" },
-                { result: "a path piece 15 rectungle1" },
-                { result: "a path piece 17 rectungle2" },
-                { result: "a path piece 14 rectungle2" },
-                { result: "part of leg 2 rectungle3" },
-                { result: "part of leg 9 rectungle3" },
-                { result: "part of leg 13 rectungle4" },
-                { result: "part of leg 10 rectungle3" },
-                { result: "part of leg 7 rectungle4" },
-                { result: "part of leg 11 rectungle4" },
-                { result: "part of leg 12 rectungle4" }
+                {result: "a path piece 9 rectungle0"},
+                {result: "a path piece 16 rectungle1"},
+                {result: "a path piece 15 rectungle1"},
+                {result: "a path piece 17 rectungle2"},
+                {result: "a path piece 14 rectungle2"},
+                {result: "part of leg 2 rectungle3"},
+                {result: "part of leg 9 rectungle3"},
+                {result: "part of leg 13 rectungle4"},
+                {result: "part of leg 10 rectungle3"},
+                {result: "part of leg 7 rectungle4"},
+                {result: "part of leg 11 rectungle4"},
+                {result: "part of leg 12 rectungle4"}
             ],
 
             list: [
@@ -196,7 +196,7 @@ export default {
             }
             Konva.Image.fromURL(
                 `${this.currentUrl}/test-img/legs_30.png`,
-                function(darthNode) {
+                function (darthNode) {
                     darthNode.setAttrs({
                         x: 440,
                         y: 160,
@@ -395,7 +395,7 @@ export default {
             tempLayer.add(group);
             tempLayer.draw();
 
-            stage30.on("dragstart", function(e) {
+            stage30.on("dragstart", function (e) {
                 e.target.moveTo(tempLayer);
                 this.colorRect = e.target.fill();
                 //console.log("Moving " + e.target.name());
@@ -403,7 +403,7 @@ export default {
             });
 
             var previousShape;
-            stage30.on("dragmove", function(evt) {
+            stage30.on("dragmove", function (evt) {
                 var pos = stage30.getPointerPosition();
                 var shape = layer.getIntersection(pos);
                 if (previousShape && shape) {
@@ -466,7 +466,7 @@ export default {
                 }
             });
             var ansKube30 = {};
-            stage30.on("dragend", function(e) {
+            stage30.on("dragend", function (e) {
                 var pos = stage30.getPointerPosition();
                 var shape = layer.getIntersection(pos);
                 if (shape) {
@@ -494,24 +494,24 @@ export default {
                 tempLayer.draw();
             });
 
-            stage30.on("dragenter", function(e) {
+            stage30.on("dragenter", function (e) {
                 e.target.fill("red");
                 //console.log("dragenter " + e.target.name());
                 layer.draw();
             });
 
-            stage30.on("dragleave", function(e) {
+            stage30.on("dragleave", function (e) {
                 e.target.fill("#f5f5f5");
                 //console.log("dragleave " + e.target.name());
                 layer.draw();
             });
 
-            stage30.on("dragover", function(e) {
+            stage30.on("dragover", function (e) {
                 //console.log("dragover " + e.target.name());
                 layer.draw();
             });
 
-            stage30.on("drop", function(e) {
+            stage30.on("drop", function (e) {
                 e.target.fill(this.colorRect);
                 //console.log("drop " + e.target.name());
                 ansKube30.numOfPath = e.target.name();
@@ -538,7 +538,14 @@ export default {
         }
     },
     mounted() {
-        if (!this.completed) this.onStart();
+        if (!this.completed)
+        {
+            setTimeout(() => {
+                this.onStart();
+                let swiper = document.querySelector(".test-swiper").swiper
+                swiper.update()
+            }, 2000)
+        }
     },
     created() {
         this.currentUrl = window.location.origin;
@@ -546,7 +553,7 @@ export default {
     },
     watch: {
         answers: {
-            handler: function(newVal, oldVal) {
+            handler: function (newVal, oldVal) {
                 this.$emit("answer", {
                     question_index: 30,
                     answer: [

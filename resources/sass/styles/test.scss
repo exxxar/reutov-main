@@ -41,6 +41,7 @@
     padding: 35px 0;
     border-top: 1px solid #ddd;
     display: flex;
+    overflow: auto;
 }
 
 .test-number {
@@ -210,6 +211,11 @@
 .test-the-blind-field-is-shaded {
     .compliance-block {
         width: 100%;
+
+
+            min-width: 200px;
+            padding: 5px;
+
     }
 
     .compliance-list {
@@ -428,6 +434,9 @@
 
 .compliance-block {
     margin-left: 5%;
+
+    min-width: 200px;
+     padding: 5px;
 }
 
 .test-liquor {
@@ -781,6 +790,10 @@
 
         .compliance-block {
             margin-left: 7%;
+
+            min-width: 200px;
+            padding: 5px;
+
         }
     }
 

@@ -235,7 +235,14 @@ export default {
         }
     },
     mounted() {
-        if (!this.completed) this.onStart();
+        if (!this.completed)
+        {
+            setTimeout(() => {
+                this.onStart();
+                let swiper = document.querySelector(".test-swiper").swiper
+                swiper.update()
+            }, 2000)
+        }
     },
     methods: {
         fitStageIntoParentContainer() {
