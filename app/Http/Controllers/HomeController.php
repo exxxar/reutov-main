@@ -36,6 +36,11 @@ class HomeController extends Controller
         return response()->download($path);
     }
 
+    public function getFiles($chapterId, $fileName){
+        $path = storage_path('app/public/files/chapters/'.$chapterId."/".$fileName);
+        return response()->download($path);
+    }
+
     public function course($id)
     {
         $course = Course::query()
