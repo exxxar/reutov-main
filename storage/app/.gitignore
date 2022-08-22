@@ -1,7 +1,0 @@
-*
-!public/
-!public/files
-!public/files/*
-!public/images
-!public/images/*
-!.gitignore
