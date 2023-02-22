@@ -121,6 +121,7 @@ export default {
                 "n.femoralis",
                 "n.ischiadicus"
             ],
+            completedPatternImg:[],
             colorRect: ["green", "purple", "red", "magenta", "black"],
             stage30Width: 715,
             stage30Height: 600
@@ -144,7 +145,26 @@ export default {
             });
             stage30.draw();
         },
+        addPatterns(){
+            //let returningPattern ={}
+            var nRadialis = new Image();
+            nRadialis.src = `${this.currentUrl}/test-img/icon300.png`
+            this.completedPatternImg.push(nRadialis)
+            var nUlnaris = new Image();
+            nUlnaris.src = `${this.currentUrl}/test-img/icon301.png`
+            this.completedPatternImg.push(nUlnaris)
+            var nMedianus = new Image();
+            nMedianus.src = `${this.currentUrl}/test-img/icon302.png`
+            this.completedPatternImg.push(nMedianus)
+            var nFemoralis = new Image();
+            nFemoralis.src = `${this.currentUrl}/test-img/icon303.png`
+            this.completedPatternImg.push(nFemoralis)
+            var nIschiadicus = new Image();
+            nIschiadicus.src =`${this.currentUrl}/test-img/icon304.png`
+            this.completedPatternImg.push(nIschiadicus)
 
+            return this.completedPatternImg
+        },
         // adapt the stage on any window resiz
 
         onStart() {
@@ -164,8 +184,9 @@ export default {
             var path;
             var rectungle;
             var text;
-
             var borderOfRect;
+            
+
             for (var i = 0; i < this.list.length; i++) {
                 path = new Konva.Path({
                     y: 160,
@@ -243,7 +264,8 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -254,7 +276,9 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fillPatternImage: imageObj,
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -266,7 +290,9 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fillPatternImage: imageObj,
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -277,7 +303,9 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fillPatternImage: this.completedPatternImg[i],
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -309,7 +337,8 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -320,7 +349,8 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -331,7 +361,8 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -342,7 +373,8 @@ export default {
                         width: 25,
                         height: 25,
                         name: "rectungle" + i,
-                        fill: this.colorRect[i],
+                        fillPatternImage: this.completedPatternImg[i],
+                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -397,8 +429,7 @@ export default {
 
             stage30.on("dragstart", function (e) {
                 e.target.moveTo(tempLayer);
-                this.colorRect = e.target.fill();
-                //console.log("Moving " + e.target.name());
+                this.completedPatternImg = e.target.fillPatternImage();
                 layer.draw();
             });
 
@@ -496,26 +527,22 @@ export default {
 
             stage30.on("dragenter", function (e) {
                 e.target.fill("red");
-                //console.log("dragenter " + e.target.name());
                 layer.draw();
             });
 
             stage30.on("dragleave", function (e) {
                 e.target.fill("#f5f5f5");
-                //console.log("dragleave " + e.target.name());
                 layer.draw();
             });
 
             stage30.on("dragover", function (e) {
-                //console.log("dragover " + e.target.name());
                 layer.draw();
             });
 
             stage30.on("drop", function (e) {
                 e.target.fill(this.colorRect);
-                //console.log("drop " + e.target.name());
+                e.target.fillPatternImage(this.completedPatternImg)
                 ansKube30.numOfPath = e.target.name();
-                //console.log(answerList);
                 e.target.moveTo(tempLayer);
                 this.colorRect = "";
                 layer.draw();
@@ -538,8 +565,9 @@ export default {
         }
     },
     mounted() {
+        this.addPatterns();
         if (!this.completed)
-        {
+        { 
             setTimeout(() => {
                 this.onStart();
                 let swiper = document.querySelector(".test-swiper").swiper
@@ -577,6 +605,7 @@ export default {
 
             return this.serverAnswers.find(x => x.question_index == "30");
         },
+        
         correct() {
             if (!this.serverAnswers) {
                 return null;
