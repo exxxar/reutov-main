@@ -288,14 +288,6 @@ export default {
 
             return 0;
         },
-        getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        },
         fitStageIntoParentContainer() {
             var container = document.querySelector("#stage-parent42");
 
@@ -363,7 +355,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer",
-                fill: this.getRandomColor(),
+                fill: "black",
                 draggable: true
             });
             group42.add(rectungle42);

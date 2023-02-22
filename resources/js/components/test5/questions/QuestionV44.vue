@@ -224,7 +224,8 @@ export default {
                 "M 53.00,130.00 C 53.00,130.00 56.00,130.00 56.00,130.00 56.00,130.00 58.00,154.00 58.00,154.00 58.00,154.00 58.00,179.00 58.00,179.00 57.98,191.92 56.50,196.12 56.50,196.12 56.50,196.12 81.91,196.40 81.91,196.27 81.91,193.66 81.64,193.84 81.64,191.09 84.76,190.84 108.64,191.18 111.36,191.27 111.49,189.52 109.03,191.77 109.00,171.00 108.98,158.96 108.91,155.15 110.92,143.00 111.72,138.18 111.60,133.77 116.00,131.00 119.76,131.67 138.31,113.88 131.68,104.00 128.83,97.91 124.54,92.74 119.00,88.90 111.57,83.76 103.05,81.13 98.97,72.00 96.70,66.94 97.60,64.16 98.00,59.00 105.50,47.75 111.51,33.86 109.08,20.00 107.91,13.35 105.47,6.43 99.00,3.17 95.53,1.43 89.77,1.94 86.00,2.47 67.65,6.78 65.97,15.46 66.00,32.00 66.02,46.37 70.00,48.62 73.88,58.50 75.21,63.11 77.04,70.33 75.26,75.00 72.47,82.31 64.19,85.33 58.00,88.87 50.09,93.40 42.85,98.91 38.35,107.00 30.25,118.25 42.00,131.62 53.00,130.00 Z",
                 "M 38.62,106.75 C 29.50,119.50 44.00,132.38 53.38,129.88 53.38,123.88 55.02,155.23 55.00,168.00 54.98,180.37 51.61,181.90 47.42,193.00 43.06,204.57 39.35,217.52 32.56,228.00 25.10,239.51 30.15,239.28 25.64,246.98 20.55,255.68 9.53,256.38 3.00,249.00 10.90,246.15 12.71,243.25 14.00,235.00 9.68,236.04 7.86,236.50 4.00,234.00 7.11,232.54 17.44,225.78 18.98,222.96 18.98,222.96 22.74,201.00 22.74,201.00 27.36,182.70 31.73,185.56 32.00,162.00 32.00,162.00 33.00,149.00 33.00,149.00 33.16,134.98 29.75,119.50 38.62,106.75 Z"
             ],
-            colorRect: "",
+            firstPattern:{},
+            secondPattern:{},
             question_44Width: 367,
             question_44Height: 430
         };
@@ -297,13 +298,13 @@ export default {
         getAnswerList(part) {
             return this.answers.filter(item => item.part === part);
         },
-        getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
+        addPatterns(){
+            var firstFillPattern = new Image();
+            firstFillPattern.src = `${this.currentUrl}/test-img/icon306.png`;
+            this.firstPattern = firstFillPattern;
+            var secondFillPattern =new Image();
+            secondFillPattern.src = `${this.currentUrl}/test-img/icon305.png`
+            this.secondPattern = secondFillPattern;
         },
         fitStageIntoParentContainer() {
             var container = document.querySelector("#stage-parent44");
@@ -372,7 +373,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer 1",
-                fill: this.getRandomColor(),
+                fillPatternImage: this.firstPattern,
                 draggable: true
             });
             group44.add(rectungle44);
@@ -403,7 +404,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer 2",
-                fill: this.getRandomColor(),
+                fillPatternImage: this.secondPattern,
                 draggable: true
             });
             group44.add(rectungle44);
@@ -470,7 +471,7 @@ export default {
 
             stage44.on("dragstart", function(e) {
                 e.target.moveTo(templayer44);
-                this.colorRect = e.target.fill();
+                this.pattern = e.target.fillPatternImage();
                 //console.log("Moving " + e.target.name());
                 layer44.draw();
             });
@@ -582,12 +583,10 @@ export default {
             });
 
             stage44.on("drop", function(e) {
-                e.target.fill(this.colorRect);
-                //console.log("drop " + e.target.name());
+                e.target.fill('');
+                e.target.fillPatternImage(this.pattern)
                 ansKube44.numOfPath = e.target.name();
-                //console.log(answerList44);
                 e.target.moveTo(templayer44);
-                this.colorRect = "";
                 layer44.draw();
             });
             this.fitStageIntoParentContainer();
@@ -618,6 +617,7 @@ export default {
         }
     },
     mounted() {
+        this.addPatterns()
         if (!this.completed)
         {
             setTimeout(() => {
