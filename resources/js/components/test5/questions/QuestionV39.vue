@@ -282,14 +282,6 @@ export default {
 
             return 0;
         },
-        getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        },
         addPatterns(){
             var fillPattern = new Image();
             fillPattern.src = `${this.currentUrl}/test-img/icon301.png`;
@@ -360,7 +352,6 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer",
-                //fill: this.getRandomColor(),
                 fillPatternImage: this.pattern,
                 draggable: true
             });
@@ -522,7 +513,7 @@ export default {
             });
 
             stage39.on("dragenter", function(e) {
-                //e.target.fill("red");
+                e.target.fill("red");
                 //console.log("dragenter " + e.target.name());
                 layer39.draw();
             });

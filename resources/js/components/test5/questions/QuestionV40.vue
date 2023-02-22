@@ -233,7 +233,7 @@ export default {
                 "M 109.50,176.75 C 109.68,179.66 116.45,221.45 116.82,230.09 117.55,253.27 116.64,260.27 114.09,270.64 112.55,280.55 109.45,281.91 108.36,298.09 107.91,310.64 111.82,318.27 111.91,331.73 113.55,347.91 113.27,350.55 109.36,365.09 108.91,374.55 108.64,375.45 108.18,379.73 109.73,389.55 109.82,390.64 109.91,400.00 109.64,404.00 105.73,405.91 101.18,407.45 96.64,409.00 90.45,407.64 86.91,406.55 87.64,400.55 92.45,387.00 92.64,382.00 92.18,376.73 91.64,378.73 91.18,375.73 90.73,372.73 94.45,370.82 95.18,366.00 94.82,360.73 88.82,349.27 88.55,339.27 86.91,323.82 89.36,323.45 90.27,307.73 89.00,291.55 88.00,292.82 85.27,283.64 84.82,274.91 85.00,249.55 85.09,239.36 92.00,231.64 91.55,233.91 95.00,228.45 94.73,227.64 89.36,234.36 83.45,237.64 83.45,228.36 84.91,164.37 84.91,164.37 84.91,164.37 105.93,174.95 109.50,176.75 Z",
                 "M 84.91,164.36 C 84.79,169.38 83.43,231.08 83.45,237.64 76.91,232.37 75.82,230.91 72.00,229.27 72.73,231.64 81.27,236.00 81.64,239.64 82.55,243.27 83.09,274.73 80.73,283.82 80.00,290.36 75.45,300.73 75.45,306.91 75.64,318.91 77.82,328.36 76.00,339.09 75.27,349.27 72.18,360.91 70.91,366.73 69.64,372.55 71.09,372.00 71.82,374.73 72.55,377.45 69.64,376.00 69.45,379.09 72.18,387.09 73.45,398.73 72.55,403.64 72.55,408.73 68.55,408.18 60.55,406.55 55.82,405.64 51.64,406.91 52.00,401.64 52.36,396.36 57.27,388.00 57.82,380.00 58.91,360.55 55.45,362.73 52.73,338.55 53.45,317.09 55.45,321.09 55.09,306.91 54.00,292.36 52.91,292.00 52.00,282.55 51.09,273.09 45.09,256.00 50.55,227.64 53.82,211.27 58.18,191.36 58.00,179.00 81.27,166.45 78.77,167.76 84.91,164.36 Z"
             ],
-            colorRect: "",
+            pattern:{},
             question_40Width: 367,
             question_40Height: 430
         };
@@ -292,13 +292,10 @@ export default {
 
             return 0;
         },
-        getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
+        addPatterns(){
+            var fillPattern = new Image();
+            fillPattern.src = `${this.currentUrl}/test-img/icon301.png`;
+            this.pattern = fillPattern;
         },
         fitStageIntoParentContainer() {
             var container = document.querySelector("#stage-parent40");
@@ -365,7 +362,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer",
-                fill: this.getRandomColor(),
+                fillPatternImage: this.pattern,
                 draggable: true
             });
             group40.add(rectungle40);
@@ -432,7 +429,7 @@ export default {
 
             stage40.on("dragstart", function(e) {
                 e.target.moveTo(templayer40);
-                this.colorRect = e.target.fill();
+                this.pattern = e.target.fillPatternImage() 
                 //console.log("Moving " + e.target.name());
                 layer40.draw();
             });
@@ -544,12 +541,10 @@ export default {
             });
 
             stage40.on("drop", function(e) {
-                e.target.fill(this.colorRect);
-                //console.log("drop " + e.target.name());
+                e.target.fill('');
+                e.target.fillPatternImage(this.pattern)
                 ansKube40.numOfPath = e.target.name();
-                //console.log(answerList40);
                 e.target.moveTo(templayer40);
-                this.colorRect = "";
                 layer40.draw();
             });
             this.fitStageIntoParentContainer();
@@ -558,6 +553,7 @@ export default {
         }
     },
     mounted() {
+        this.addPatterns()
         if (!this.completed)
         {
             setTimeout(() => {
