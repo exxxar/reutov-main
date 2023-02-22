@@ -102,7 +102,7 @@ export default {
             ],
             testPass: false,
             labelOfRectungle: ["III пара", "VI пара", "IV пара"],
-            colorRect: ["green", "purple", "red"],
+            completedPatternImg:[],
             stage66Width: 625,
             stage66Height: 600,
             currentUrl: "",
@@ -140,6 +140,22 @@ export default {
                 y: scale
             });
             stage66.draw();
+        },
+
+        addPatterns(){
+            //let returningPattern ={}
+            var nRadialis = new Image();
+            nRadialis.src = `${this.currentUrl}/test-img/icon302.png`
+            this.completedPatternImg.push(nRadialis)
+            var nUlnaris = new Image();
+            nUlnaris.src = `${this.currentUrl}/test-img/icon301.png`
+            this.completedPatternImg.push(nUlnaris)
+            var nMedianus = new Image();
+            nMedianus.src = `${this.currentUrl}/test-img/icon300.png`
+            this.completedPatternImg.push(nMedianus)
+
+
+            return this.completedPatternImg
         },
 
         // adapt the stage on any window resiz
@@ -228,7 +244,7 @@ export default {
                     width: 25,
                     height: 25,
                     name: "rectungle" + i,
-                    fill: this.colorRect[i],
+                    fillPatternImage: this.completedPatternImg[i],
                     draggable: true
                 });
                 group.add(rectungle);
@@ -250,8 +266,7 @@ export default {
                 e.target.moveTo(tempLayer);
                 targetPositionX = e.target.attrs.x;
                 targetPositionY = e.target.attrs.y;
-                this.colorRect = e.target.fill();
-                //console.log("Moving " + e.target.name());
+                this.completedPatternImg = e.target.fillPatternImage();
                 layer.draw();
             });
 
@@ -368,18 +383,17 @@ export default {
             });
 
             stage66.on("drop", function(e) {
-                e.target.fill(this.colorRect);
-                //console.log("drop " + e.target.name());
+                e.target.fill('');
+                e.target.fillPatternImage(this.completedPatternImg)
                 ansKube66.numOfPath = e.target.name();
-                //console.log(answerList);
                 e.target.moveTo(tempLayer);
-                this.colorRect = "";
                 layer.draw();
             });
             this.fitStageIntoParentContainer();
         }
     },
     mounted() {
+        this.addPatterns()
         if (!this.completed)
         {
             setTimeout(() => {
