@@ -43,6 +43,14 @@
 var stage30 = null;
 export default {
     props: {
+        number: {
+            type: String,
+            default: "01"
+        },
+        from: {
+            type: String,
+            default: "01"
+        },
         completed: {
             type: Boolean
         },
@@ -122,7 +130,6 @@ export default {
                 "n.ischiadicus"
             ],
             completedPatternImg:[],
-            colorRect: ["green", "purple", "red", "magenta", "black"],
             stage30Width: 715,
             stage30Height: 600
         };
@@ -265,7 +272,7 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fill: this.colorRect[i],
+
                         draggable: true
                     });
                     group.add(rectungle);
@@ -277,8 +284,7 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fillPatternImage: imageObj,
-                        //fill: this.colorRect[i],
+
                         draggable: true
                     });
                     group.add(rectungle);
@@ -291,8 +297,7 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fillPatternImage: imageObj,
-                        //fill: this.colorRect[i],
+
                         draggable: true
                     });
                     group.add(rectungle);
@@ -304,8 +309,6 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fillPatternImage: this.completedPatternImg[i],
-                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -338,7 +341,7 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fill: this.colorRect[i],
+
                         draggable: true
                     });
                     group.add(rectungle);
@@ -350,7 +353,7 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fill: this.colorRect[i],
+
                         draggable: true
                     });
                     group.add(rectungle);
@@ -362,7 +365,7 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fill: this.colorRect[i],
+
                         draggable: true
                     });
                     group.add(rectungle);
@@ -374,7 +377,6 @@ export default {
                         height: 25,
                         name: "rectungle" + i,
                         fillPatternImage: this.completedPatternImg[i],
-                        //fill: this.colorRect[i],
                         draggable: true
                     });
                     group.add(rectungle);
@@ -540,11 +542,10 @@ export default {
             });
 
             stage30.on("drop", function (e) {
-                e.target.fill(this.colorRect);
+                e.target.fill('');
                 e.target.fillPatternImage(this.completedPatternImg)
                 ansKube30.numOfPath = e.target.name();
                 e.target.moveTo(tempLayer);
-                this.colorRect = "";
                 layer.draw();
             });
             this.fitStageIntoParentContainer();
