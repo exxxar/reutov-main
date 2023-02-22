@@ -253,7 +253,9 @@ export default {
                 "M 57.13,139.02 C 60.57,138.89 83.08,139.28 84.49,139.16 84.27,137.33 84.61,127.78 84.61,127.78 84.61,127.78 109.61,127.70 113.09,127.39 113.70,130.09 113.87,128.91 114.22,131.09 116.52,132.57 114.57,160.13 117.04,170.00 117.04,170.00 121.53,181.00 121.53,181.00 123.76,187.75 124.72,193.25 127.89,200.00 127.89,200.00 142.05,225.00 142.05,225.00 145.50,234.28 140.77,254.03 154.00,256.51 158.10,257.28 161.34,253.90 161.67,250.00 162.02,245.81 158.23,241.58 157.00,235.00 157.00,235.00 167.00,235.00 167.00,235.00 162.02,231.70 159.53,231.26 155.39,226.00 149.91,219.03 149.60,206.72 147.37,198.00 143.97,184.70 139.02,180.43 139.00,166.00 138.97,146.74 139.98,121.74 131.68,104.00 128.83,97.91 124.54,92.74 119.00,88.90 110.99,83.35 101.64,80.51 98.06,70.00 96.76,65.99 97.68,63.04 98.06,59.00 98.44,54.56 111.62,41.50 109.08,20.00 107.91,13.35 105.47,6.43 99.00,3.17 95.53,1.43 89.77,1.94 86.00,2.47 67.65,6.78 65.97,15.46 66.00,32.00 66.02,45.63 74.12,54.62 74.00,59.00 75.67,64.16 77.23,70.76 74.91,75.99 71.89,82.82 64.01,85.43 58.00,88.87 50.35,93.25 42.68,99.20 38.35,107.00 31.23,119.80 33.16,135.89 33.00,150.00 33.00,150.00 32.00,163.00 32.00,163.00 31.75,184.93 27.40,182.75 23.13,200.00 23.13,200.00 18.98,222.96 18.98,222.96 17.44,225.78 7.11,232.54 4.00,234.00 7.86,236.50 9.68,236.04 14.00,235.00 12.71,243.25 10.90,246.15 3.00,249.00 9.92,256.82 21.38,255.42 26.16,246.00 29.43,239.56 26.42,237.31 31.17,230.00 39.33,217.42 42.30,206.58 47.42,193.00 51.61,181.90 54.98,180.37 54.92,168.00 54.92,168.00 54.92,149.00 54.92,149.00 54.29,143.32 53.11,134.49 54.00,129.00 57.45,135.02 56.87,136.94 57.13,139.02 Z",
                 "M 57.12,139.00 C 57.12,139.00 58.00,179.00 58.00,179.00 57.98,191.29 54.61,204.86 52.42,217.00 49.30,234.32 48.80,238.39 49.00,256.00 49.00,256.00 55.00,308.00 55.00,308.00 55.00,308.00 53.01,334.00 53.01,334.00 52.67,349.10 61.13,370.25 57.71,383.00 56.48,387.59 49.92,400.32 53.75,404.18 55.61,406.04 67.24,407.83 69.72,406.94 71.25,406.39 71.96,405.38 72.42,403.87 73.59,400.01 70.71,386.52 70.13,382.00 70.13,382.00 70.89,367.00 70.89,367.00 70.89,367.00 73.39,355.00 73.39,355.00 74.95,346.75 76.21,338.38 76.63,330.00 76.63,330.00 75.04,312.00 75.04,312.00 74.68,302.78 78.77,294.02 80.25,285.00 82.50,271.24 83.32,260.60 83.29,246.84 83.13,235.87 84.48,142.31 84.48,139.16 81.85,139.23 65.44,139.00 57.12,139.00 Z"
             ],
-            colorRect: "",
+            firstPattern:{},
+            secondPattern:{},
+            thirdPattern:{},
             question_45Width: 367,
             question_45Height: 430
         };
@@ -323,13 +325,16 @@ export default {
                 }
             });
         },
-        getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
+        addPatterns(){
+            var firstFillPattern = new Image();
+            firstFillPattern.src = `${this.currentUrl}/test-img/icon304.png`;
+            this.firstPattern = firstFillPattern;
+            var secondFillPattern =new Image();
+            secondFillPattern.src = `${this.currentUrl}/test-img/icon305.png`
+            this.secondPattern = secondFillPattern;
+            var thirdFillPattern =new Image();
+            thirdFillPattern.src = `${this.currentUrl}/test-img/icon307.png`
+            this.thirdPattern = thirdFillPattern;
         },
         fitStageIntoParentContainer() {
             var container = document.querySelector("#stage-parent45");
@@ -399,7 +404,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer 1",
-                fill: this.getRandomColor(),
+                fillPatternImage: this.firstPattern,
                 draggable: true
             });
             group45.add(rectungle45);
@@ -430,7 +435,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer 2",
-                fill: this.getRandomColor(),
+                fillPatternImage: this.secondPattern,
                 draggable: true
             });
             group45.add(rectungle45);
@@ -461,7 +466,7 @@ export default {
                 width: 25,
                 height: 25,
                 name: "rect answer 3",
-                fill: this.getRandomColor(),
+                fillPatternImage: this.thirdPattern,
                 draggable: true
             });
             group45.add(rectungle45);
@@ -528,7 +533,7 @@ export default {
 
             stage45.on("dragstart", function (e) {
                 e.target.moveTo(templayer45);
-                this.colorRect = e.target.fill();
+                this.pattern = e.target.fillPatternImage();
                 //console.log("Moving " + e.target.name());
                 layer45.draw();
             });
@@ -641,12 +646,10 @@ export default {
             });
 
             stage45.on("drop", function (e) {
-                e.target.fill(this.colorRect);
-                //console.log("drop " + e.target.name());
+                e.target.fill('');
+                e.target.fillPatternImage(this.pattern)
                 ansKube45.numOfPath = e.target.name();
-                //console.log(answerList45);
                 e.target.moveTo(templayer45);
-                this.colorRect = "";
                 layer45.draw();
             });
             this.fitStageIntoParentContainer();
@@ -677,6 +680,7 @@ export default {
         }
     },
     mounted() {
+        this.addPatterns()
         if (!this.completed)
         {
             setTimeout(() => {
