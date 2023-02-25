@@ -260,6 +260,45 @@ export default {
             }
             tempLayer.add(group);
             tempLayer.draw();
+
+            borderOfRect = new Konva.Rect({
+                cornerRadius: 5,
+                x: 220,
+                y: 400,
+                width: 198,
+                height: 52,
+                fill: "#f5f5f5",
+                stroke: "#e6e6e6",
+                strokeWidth: 1
+            });
+            group.add(borderOfRect);
+            var clear_rectungle;
+            clear_rectungle = new Konva.Rect({
+                cornerRadius: 5,
+                x: 235,
+                y: 415,
+                width: 25,
+                height: 25,
+                fill: "#f5f5f5",
+                name: "Clear",
+                stroke: "black",
+                strokeWidth: 2,
+                draggable: false
+            });
+            group.add(clear_rectungle);
+
+            text = new Konva.Text({
+                x: 275,
+                y: 418,
+                draggable: false,
+                fill: "black",
+                text: "Очистить"
+            });
+            text.fontSize(22);
+            group.add(text);
+            tempLayer.add(group);
+            tempLayer.draw();
+
             var targetPositionX;
             var targetPositionY;
             stage66.on("dragstart", function(e) {
@@ -390,6 +429,8 @@ export default {
                 layer.draw();
             });
             this.fitStageIntoParentContainer();
+            clear_rectungle.on("click", this.onStart);
+            clear_rectungle.on("tap", this.onStart);
         }
     },
     mounted() {
