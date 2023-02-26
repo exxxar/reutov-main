@@ -41,19 +41,19 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-<!--        <div class="timer-block" v-if="!loading && !completed">-->
-<!--            <div class="row">-->
-<!--                <p>-->
-<!--                    до окончания теста-->
-<!--                </p>-->
-<!--                <Timer-->
-<!--                    :hours="hours"-->
-<!--                    :minutes="minutes"-->
-<!--                    :seconds="seconds"-->
-<!--                    v-on:late="submit"-->
-<!--                />-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="timer-block" v-if="!loading && !completed">-->
+        <!--            <div class="row">-->
+        <!--                <p>-->
+        <!--                    до окончания теста-->
+        <!--                </p>-->
+        <!--                <Timer-->
+        <!--                    :hours="hours"-->
+        <!--                    :minutes="minutes"-->
+        <!--                    :seconds="seconds"-->
+        <!--                    v-on:late="submit"-->
+        <!--                />-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div v-if="test_good && completed" class="tests-good tests mb-3">
             <div>
                 <button
@@ -112,11 +112,9 @@
                 ordinalNumber="01"
             ></question-test-91>
         </div>
-        <div v-if="!loading && !completed" class="test-button__blok">
-            <button type="submit" style="color: white" class="test-button">
-                Сдать тест
-            </button>
-        </div>
+        <button v-if="!loading && !completed" type="submit" style="color: white" class="test-button">
+            Сдать тест
+        </button>
     </form>
 </template>
 <script>
@@ -207,7 +205,7 @@ export default {
             );
             const seconds = Math.floor(
                 ((timeInMiliseconds / 1000 / 60 / 60 - hours) * 60 - minutes) *
-                    60
+                60
             );
 
             if (!isNaN(hours) && hours >= 0) {

@@ -112,11 +112,9 @@
                 :questions="questions"
             ></question-test>
         </div>
-        <div v-if="!loading && !completed" class="test-button__blok">
-            <button type="submit" style="color: white" class="test-button">
-                Сдать тест
-            </button>
-        </div>
+        <button v-if="!loading && !completed" type="submit" style="color: white" class="test-button">
+            Сдать тест
+        </button>
     </form>
 </template>
 <script>

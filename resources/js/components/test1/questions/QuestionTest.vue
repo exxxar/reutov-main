@@ -90,7 +90,7 @@ export default {
                 {
                     symbol: "Б",
                     result: null,
-                    correct: "подкорковые узлы"
+                    correct: "подкорковые узлы" || "базальные ганглии" || "базальные ядра"
                 },
                 {
                     symbol: "В",

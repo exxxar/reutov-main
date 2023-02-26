@@ -102,166 +102,176 @@
                 </button>
             </div>
         </div>
-        <div v-show="!loading" id="test" class="swiper test-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide test-slide">
-                    <question-test-16
-                        number="16"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="01"
-                    ></question-test-16>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-17
-                        number="17"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="02"
-                    ></question-test-17>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-18
-                        number="18"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="03"
-                    ></question-test-18>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-19
-                        number="19"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="04"
-                    ></question-test-19>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-20
-                        number="20"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="05"
-                    ></question-test-20>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-21
-                        number="21"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="06"
-                    ></question-test-21>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-22
-                        number="22"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="07"
-                    ></question-test-22>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-23
-                        number="23"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="08"
-                    ></question-test-23>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-24
-                        number="24"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="09"
-                    ></question-test-24>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-25
-                        number="25"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="10"
-                    ></question-test-25>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-26
-                        number="26"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="11"
-                    ></question-test-26>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-27
-                        number="27"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="12"
-                    ></question-test-27>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-28
-                        number="28"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="13"
-                    ></question-test-28>
-                </div>
-                <div class="swiper-slide  test-slide ">
-                    <question-test-29
-                        number="29"
-                        from="94"
-                        v-on:answer="handlerAnswers"
-                        :serverAnswers="result"
-                        :questions="questions"
-                        ordinalNumber="14"
-                    ></question-test-29>
+        <div class="test-wrapper">
+            <div v-show="!loading" id="test" class="swiper test-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide test-slide">
+                        <question-test-16
+                            number="16"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="01"
+                        ></question-test-16>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-17
+                            number="17"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="02"
+                        ></question-test-17>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-18
+                            number="18"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="03"
+                        ></question-test-18>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-19
+                            number="19"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="04"
+                        ></question-test-19>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-20
+                            number="20"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="05"
+                        ></question-test-20>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-21
+                            number="21"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="06"
+                        ></question-test-21>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-22
+                            number="22"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="07"
+                        ></question-test-22>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-23
+                            number="23"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="08"
+                        ></question-test-23>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-24
+                            number="24"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="09"
+                        ></question-test-24>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-25
+                            number="25"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="10"
+                        ></question-test-25>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-26
+                            number="26"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="11"
+                        ></question-test-26>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-27
+                            number="27"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="12"
+                        ></question-test-27>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-28
+                            number="28"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="13"
+                        ></question-test-28>
+                    </div>
+                    <div class="swiper-slide  test-slide ">
+                        <question-test-29
+                            number="29"
+                            from="94"
+                            v-on:answer="handlerAnswers"
+                            :serverAnswers="result"
+                            :questions="questions"
+                            ordinalNumber="14"
+                        ></question-test-29>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div v-show="!loading && !completed" class="test-button__blok test-button__blok_space-between">
-            <div class="swiper-navigation">
-                <button class="test-button-prev">
-                    <svg width="20" height="29" viewBox="0 0 20 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.925 18.2441C18.3725 17.6916 17.48 17.6916 16.9275 18.2441L11.4167 23.7408V2.24992C11.4167 1.47075 10.7792 0.833252 10 0.833252C9.22085 0.833252 8.58335 1.47075 8.58335 2.24992V23.7549L3.08668 18.2583C2.53418 17.7058 1.64168 17.7058 1.08918 18.2583C0.53668 18.8108 0.53668 19.7033 1.08918 20.2558L9.00835 28.1749C9.56085 28.7274 10.4533 28.7274 11.0058 28.1749L18.925 20.2558C19.4633 19.7033 19.4633 18.7966 18.925 18.2441Z" fill="#282C2F"/>
-                    </svg>
-                </button>
-                <button class="test-button-next">
-                    <svg width="20" height="29" viewBox="0 0 20 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.925 18.2441C18.3725 17.6916 17.48 17.6916 16.9275 18.2441L11.4167 23.7408V2.24992C11.4167 1.47075 10.7792 0.833252 10 0.833252C9.22085 0.833252 8.58335 1.47075 8.58335 2.24992V23.7549L3.08668 18.2583C2.53418 17.7058 1.64168 17.7058 1.08918 18.2583C0.53668 18.8108 0.53668 19.7033 1.08918 20.2558L9.00835 28.1749C9.56085 28.7274 10.4533 28.7274 11.0058 28.1749L18.925 20.2558C19.4633 19.7033 19.4633 18.7966 18.925 18.2441Z" fill="#282C2F"/>
-                    </svg>
+            <div v-show="!loading && !completed">
+                <div class="test-button__blok test-button__blok_space-between">
+                    <div class="swiper-navigation">
+                        <button class="test-button-prev">
+                            <svg width="20" height="29" viewBox="0 0 20 29" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.925 18.2441C18.3725 17.6916 17.48 17.6916 16.9275 18.2441L11.4167 23.7408V2.24992C11.4167 1.47075 10.7792 0.833252 10 0.833252C9.22085 0.833252 8.58335 1.47075 8.58335 2.24992V23.7549L3.08668 18.2583C2.53418 17.7058 1.64168 17.7058 1.08918 18.2583C0.53668 18.8108 0.53668 19.7033 1.08918 20.2558L9.00835 28.1749C9.56085 28.7274 10.4533 28.7274 11.0058 28.1749L18.925 20.2558C19.4633 19.7033 19.4633 18.7966 18.925 18.2441Z"
+                                    fill="#282C2F"/>
+                            </svg>
+                        </button>
+                        <button class="test-button-next">
+                            <svg width="20" height="29" viewBox="0 0 20 29" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.925 18.2441C18.3725 17.6916 17.48 17.6916 16.9275 18.2441L11.4167 23.7408V2.24992C11.4167 1.47075 10.7792 0.833252 10 0.833252C9.22085 0.833252 8.58335 1.47075 8.58335 2.24992V23.7549L3.08668 18.2583C2.53418 17.7058 1.64168 17.7058 1.08918 18.2583C0.53668 18.8108 0.53668 19.7033 1.08918 20.2558L9.00835 28.1749C9.56085 28.7274 10.4533 28.7274 11.0058 28.1749L18.925 20.2558C19.4633 19.7033 19.4633 18.7966 18.925 18.2441Z"
+                                    fill="#282C2F"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" style="color: white" class="test-button">
+                    Сдать тест
                 </button>
             </div>
-            <button type="submit" style="color: white" class="test-button">
-                Сдать тест
-            </button>
         </div>
     </form>
 </template>
